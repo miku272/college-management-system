@@ -7,7 +7,7 @@
     if ($email === 'admin@example.com' and $password === '123') {
         session_start();
         $_SESSION['signIn'] = true;
-        header('location: ../index.php');
+        header('location: ../admin/dashboard.php');
     }
     else {
         echo "<script>alert('Invalid email or password')</script>";
