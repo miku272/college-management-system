@@ -193,19 +193,19 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="./user_accounts.php?user=teachers" class="nav-link">
+                                    <a href="./user_accounts.php?user=teacher" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Teachers</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="./user_accounts.php?user=students" class="nav-link">
+                                    <a href="./user_accounts.php?user=student" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Students</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="./user_accounts.php?user=parents" class="nav-link">
+                                    <a href="./user_accounts.php?user=parent" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Parents</p>
                                     </a>

@@ -24,7 +24,7 @@
         <!-- Info boxes -->
         <div class="row">
             <?php
-            $user_query = "SELECT * FROM accounts WHERE user_type='" . $_REQUEST['user'];
+            $user_query = "SELECT * FROM accounts WHERE user_type='" . $_REQUEST['user'] . "'";
             $user_result = mysqli_query($con, $user_query);
 
             while ($users = mysqli_fetch_object($user_result)) {
