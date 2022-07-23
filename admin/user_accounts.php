@@ -23,7 +23,14 @@
     <div class="container-fluid">
         <!-- Info boxes -->
         <div class="row">
-            <!-- /.col -->
+            <?php
+            $user_query = "SELECT * FROM accounts";
+            $user_result = mysqli_query($con, $user_query);
+
+            while ($users = mysqli_fetch_object($user_result)) {
+                echo $users->email;
+            }
+            ?>
         </div>
         <!-- /.row -->
     </div>
