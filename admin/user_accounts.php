@@ -35,15 +35,16 @@
                     <?php
                     $user_query = "SELECT * FROM accounts WHERE user_type='" . $_REQUEST['user'] . "'";
                     $user_result = mysqli_query($con, $user_query);
+                    $count = 1;
 
                     while ($users = mysqli_fetch_object($user_result)) {
                     ?>
                         <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td><?php echo $count; ?></td>
+                            <td><?php echo $users->user_name; ?></td>
+                            <td><?php echo $users->email; ?></td>
                         </tr>
-                    <?php } ?>
+                    <?php $count++; }  ?>
                 </tbody>
                 <thead>
                     <tr>

@@ -13,7 +13,7 @@
   <title>College Management System - Home</title>
 </head>
 
-<body style="background: linear-gradient(450deg, #8cc5d0, transparent);">
+<body style="background: linear-gradient(-450deg, #8cc5d0, transparent);">
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg bg-light" style="background: linear-gradient(450deg, #8cc5d0, transparent);">
     <div class="container-fluid">
