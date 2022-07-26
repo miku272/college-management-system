@@ -22,10 +22,40 @@
 <section class="content">
     <div class="container-fluid">
         <!-- Info boxes -->
-        
-        <!-- /.row -->
-    </div>
-    <!--/. container-fluid -->
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">
+                    Classes
+                </h3>
+                <div class="card-tools">
+                    <a href="?action=add-new" class="btn btn-sm btn-outline-success"><i class="fa fa-plus mr-2"></i>Add New</a>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive bg-white">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Sr no.</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <thead>
+                            <tr>
+                                <th>Sr no.</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+            <!-- /.row -->
+        </div>
+        <!--/. container-fluid -->
 </section>
 <!-- /.content -->
 <?php include('footer.php'); ?>
