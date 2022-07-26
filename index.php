@@ -139,12 +139,6 @@
         </div>
     </div>
   </div>
-<?php } else { ?>
-  <div class="col-lg-6 my-5">
-    <div class="w-50 mx-auto">
-      <img src="images/index_banner.jpg" style="border-radius: 15px;" alt="college_logo" width="650" height="705" />
-    </div>
-  </div>
 <?php } ?>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 </body>

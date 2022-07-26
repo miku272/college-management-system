@@ -22,12 +22,13 @@
 <section class="content">
     <div class="container-fluid">
         <!-- Info boxes -->
-        <div class="table-responsive">
+        <div class="table-responsive bg-white">
             <table class="table table-bordered">
                 <thead>
                     <tr>
                         <th>Sr no.</th>
                         <th>Name</th>
+                        <th>Email</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -43,6 +44,7 @@
                             <td><?php echo $count; ?></td>
                             <td><?php echo $users->user_name; ?></td>
                             <td><?php echo $users->email; ?></td>
+                            <td></td>
                         </tr>
                     <?php $count++; }  ?>
                 </tbody>
@@ -50,6 +52,7 @@
                     <tr>
                         <th>Sr no.</th>
                         <th>Name</th>
+                        <th>Email</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
