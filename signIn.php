@@ -12,7 +12,7 @@
 
 <body>
     <!-- Sign In Page -->
-    <section class="vh-100 d-flex" style="background: linear-gradient(360deg, #b1c8de, transparent);">
+    <section class="vh-100 d-flex" style="background: linear-gradient(-450deg, #8cc5d0, transparent);">
         <div class="col-3 m-auto">
             <div class="card">
                 <div class="card-body shadow">
