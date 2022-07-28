@@ -174,7 +174,7 @@
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                         <li class="nav-item menu-open">
-                            <a href="dashboard.php" class="nav-link active">
+                            <a href="<?php echo $site_url; ?>/admin/dashboard.php" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
                                     Dashboard
@@ -183,7 +183,7 @@
                             </a>
                         </li>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-tree"></i>
                                 <p>
@@ -193,32 +193,32 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="./user_accounts.php?user=teacher" class="nav-link">
+                                    <a href="<?php echo $site_url; ?>/admin/user_accounts.php?user=teacher" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Teachers</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="./user_accounts.php?user=student" class="nav-link">
+                                    <a href="<?php echo $site_url; ?>/admin/user_accounts.php?user=student" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Students</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="./user_accounts.php?user=parent" class="nav-link">
+                                    <a href="<?php echo $site_url; ?>/admin/user_accounts.php?user=parent" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Parents</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="./user_accounts.php?user=librarian" class="nav-link">
+                                    <a href="<?php echo $site_url; ?>/admin/user_accounts.php?user=librarian" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Librarian</p>
                                     </a>
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-tree"></i>
                                 <p>
@@ -228,38 +228,38 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="classes.php" class="nav-link">
+                                    <a href="<?php echo $site_url; ?>/admin/classes.php" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Classes</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="sections.php" class="nav-link">
+                                    <a href="<?php echo $site_url; ?>/admin/sections.php" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Section</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="courses.php" class="nav-link">
+                                    <a href="<?php echo $site_url; ?>/admin/courses.php" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Courses</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="subjects.php" class="nav-link">
+                                    <a href="<?php echo $site_url; ?>/admin/subjects.php" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Subjects</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="lessons.php" class="nav-link">
+                                    <a href="<?php echo $site_url; ?>/admin/lessons.php" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Lessons</p>
                                     </a>
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-tree"></i>
                                 <p>
@@ -294,11 +294,11 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-tree"></i>
                                 <p>
-                                    Manage Examination   
+                                    Manage Examination
                                     <i class="fas fa-angle-left right"></i>
                                 </p>
                             </a>
@@ -329,11 +329,11 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-tree"></i>
                                 <p>
-                                    Manage Student Attendence   
+                                    Manage Student Attendence
                                     <i class="fas fa-angle-left right"></i>
                                 </p>
                             </a>
@@ -364,11 +364,11 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-tree"></i>
                                 <p>
-                                    Manage Accounting   
+                                    Manage Accounting
                                     <i class="fas fa-angle-left right"></i>
                                 </p>
                             </a>
@@ -399,11 +399,11 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-tree"></i>
                                 <p>
-                                    Manage Events   
+                                    Manage Events
                                     <i class="fas fa-angle-left right"></i>
                                 </p>
                             </a>
@@ -434,11 +434,11 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-tree"></i>
                                 <p>
-                                    Manage Others   
+                                    Manage Others
                                     <i class="fas fa-angle-left right"></i>
                                 </p>
                             </a>

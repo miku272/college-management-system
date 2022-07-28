@@ -1,6 +1,17 @@
 <?php include('../includes/config.php'); ?>
 <?php include('header.php'); ?>
 <?php include('side_bar.php'); ?>
+
+<?php
+if (isset($_POST['submit'])) {
+    $title = $_POST['title'];
+    $section_title = implode(',', $_POST['section']);
+    $added_date = date('Y-m-d');
+
+    $query = mysqli_query($con, "INSERT INTO classes (title, section, added_date) VALUES('$title', '$section_title', '$added_date')") or die('oops! Something went wrong...');
+}
+?>
+
 <!-- Content Header (Page header) -->
 <div class="content-header">
     <div class="container-fluid">
@@ -30,7 +41,7 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive bg-white">
-                        <form action="" method="post">
+                        <form action="" method="POST">
                             <div class="form-group px-5 py-3">
                                 <label for="title">Title</label>
                                 <input type="text" name="title" class="form-control bg-white mb-4" placeholder="Enter title" required>
@@ -43,13 +54,13 @@
                                 ?>
                                     <div>
                                         <label for="<?php $count ?>">
-                                            <input type="checkbox" id="<?php $count ?>" name="section[]" class="mb-1" required><?php echo $sections->title; ?>
+                                            <input type="checkbox" id="<?php $count ?>" value="<?php echo $sections->title; ?>" name="section[]" class="mb-1" required><?php echo $sections->title; ?>
                                         </label>
                                     </div>
                                 <?php $count++;
                                 } ?>
                             </div>
-                            <input type="submit" class="btn btn-success mx-5 mb-2 col-3" value="Add Class">
+                            <input type="submit" name="submit" class="btn btn-success mx-5 mb-2 col-3" value="Add Class">
                         </form>
                     </div>
                 </div>
@@ -72,16 +83,34 @@
                             <thead>
                                 <tr>
                                     <th>Sr no.</th>
-                                    <th>Name</th>
-                                    <th>Email</th>
+                                    <th>Class</th>
+                                    <th>Sections</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
+                            <tbody>
+                            <tbody>
+                                <?php
+                                $query = mysqli_query($con, "SELECT * FROM classes");
+                                $count = 1;
+
+                                while ($class = mysqli_fetch_object($query)) {
+                                ?>
+                                    <tr>
+                                        <td><?php echo $count; ?></td>
+                                        <td><?php echo $class->title; ?></td>
+                                        <td><?php echo $class->section; ?></td>
+                                        <td></td>
+                                    </tr>
+                                <?php $count++;
+                                } ?>
+                            </tbody>
+                            </tbody>
                             <thead>
                                 <tr>
                                     <th>Sr no.</th>
-                                    <th>Name</th>
-                                    <th>Email</th>
+                                    <th>Class</th>
+                                    <th>Sections</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
