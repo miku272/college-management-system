@@ -1,6 +1,4 @@
 <?php include('../includes/config.php'); ?>
-<?php include('header.php'); ?>
-<?php include('side_bar.php'); ?>
 
 <?php
 if (isset($_POST['submit'])) {
@@ -8,12 +6,65 @@ if (isset($_POST['submit'])) {
     $category = $_POST['category'];
     $duration = $_POST['duration'];
     $price = $_POST['price'];
-    $image = $_POST['thumbnail'];
+    $image = $_FILES["thumbnail"]["name"];
     $date_added = date('Y-m-d');
 
-    $query = mysqli_query($con, "INSERT INTO courses (course_name, category, duration, price, course_image, date_added) VALUES ('$name', '$category', '$duration', $price, '$image', '$date_added')") or die(mysqli_error($con));
+
+    $target_dir = "../dist/uploads/";
+    $target_file = $target_dir . basename($_FILES["thumbnail"]["name"]);
+    $uploadOk = 1;
+    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+
+    // Check if image file is a actual image or fake image
+    if (isset($_POST["submit"])) {
+        $check = getimagesize($_FILES["thumbnail"]["tmp_name"]);
+        if ($check !== false) {
+            $uploadOk = 1;
+        } else {
+            echo "File is not an image.";
+            $uploadOk = 0;
+        }
+    }
+
+    // Check if file already exists
+    if (file_exists($target_file)) {
+        echo "Sorry, file already exists.";
+        $uploadOk = 0;
+    }
+
+    // Check file size
+    if ($_FILES["thumbnail"]["size"] > 50000000) {
+        echo "Sorry, your file is too large.";
+        $uploadOk = 0;
+    }
+
+    // Allow certain file formats
+    if (
+        $imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+        && $imageFileType != "gif"
+    ) {
+        echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+        $uploadOk = 0;
+    }
+
+    // Check if $uploadOk is set to 0 by an error
+    if ($uploadOk == 0) {
+        echo "Sorry, your file was not uploaded.";
+        // if everything is ok, try to upload file
+    } else {
+        if (move_uploaded_file($_FILES["thumbnail"]["tmp_name"], $target_file)) {
+            $query = mysqli_query($con, "INSERT INTO courses (course_name, category, duration, price, course_image, date_added) VALUES ('$name', '$category', '$duration', $price, '$image', '$date_added')") or die(mysqli_error($con));
+
+            header('location: courses.php');
+        } else {
+            echo "Sorry, there was an error uploading your file.";
+        }
+    }
 }
 ?>
+
+<?php include('header.php'); ?>
+<?php include('side_bar.php'); ?>
 
 <!-- Content Header (Page header) -->
 <div class="content-header">
@@ -108,7 +159,7 @@ if (isset($_POST['submit'])) {
                                 ?>
                                     <tr>
                                         <td><?php echo $count; ?></td>
-                                        <td><img src="<?php echo $course->course_image; ?>" alt="Course Image" height="100" width="100"></td>
+                                        <td><img src="../dist/uploads/<?php echo $course->course_image; ?>" alt="Course Image" height="100" width="100" class="border"></td>
                                         <td><?php echo $course->course_name; ?></td>
                                         <td><?php echo $course->category; ?></td>
                                         <td><?php echo $course->duration; ?></td>
