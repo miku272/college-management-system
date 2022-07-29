@@ -105,7 +105,6 @@ if (isset($_POST['submit'])) {
                                 <?php $count++;
                                 } ?>
                             </tbody>
-                            </tbody>
                             <thead>
                                 <tr>
                                     <th>Sr no.</th>

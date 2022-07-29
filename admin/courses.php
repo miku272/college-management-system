@@ -4,11 +4,14 @@
 
 <?php
 if (isset($_POST['submit'])) {
-    $title = $_POST['title'];
-    $section_title = implode(',', $_POST['section']);
-    $added_date = date('Y-m-d');
+    $name = $_POST['name'];
+    $category = $_POST['category'];
+    $duration = $_POST['duration'];
+    $price = $_POST['price'];
+    $image = $_POST['thumbnail'];
+    $date_added = date('Y-m-d');
 
-    $query = mysqli_query($con, "INSERT INTO classes (title, section, added_date) VALUES('$title', '$section_title', '$added_date')") or die('oops! Something went wrong...');
+    $query = mysqli_query($con, "INSERT INTO courses (course_name, category, duration, price, course_image, date_added) VALUES ('$name', '$category', '$duration', $price, '$image', '$date_added')") or die(mysqli_error($con));
 }
 ?>
 
@@ -41,24 +44,27 @@ if (isset($_POST['submit'])) {
                 </div>
                 <div class="card-body">
                     <div class="table-responsive bg-white">
-                        <form action="" method="POST">
+                        <form action="" enctype="multipart/form-data" method="POST">
                             <div class="form-group px-5 py-3">
-                                <label for="title">Title</label>
-                                <input type="text" name="title" class="form-control bg-white mb-4" placeholder="Enter title" required>
+                                <label for="name">Course name</label>
+                                <input type="text" name="name" class="form-control bg-white mb-4" placeholder="Enter course name" required>
 
-                                <label for="section">Section</label>
-                                <?php
-                                $query = mysqli_query($con, "SELECT * FROM sections");
-                                $count = 1;
-                                while ($sections = mysqli_fetch_object($query)) {
-                                ?>
-                                    <div>
-                                        <label for="<?php $count ?>">
-                                            <input type="checkbox" id="<?php $count ?>" value="<?php echo $sections->title; ?>" name="section[]" class="mb-1" required><?php echo $sections->title; ?>
-                                        </label>
-                                    </div>
-                                <?php $count++;
-                                } ?>
+                                <label for="category">Course Category</label>
+                                <select name="category" class="form-control bg-white mb-4">
+                                    <option value="">Select Category</option>
+                                    <option value="programming">Programming</option>
+                                    <option value="web-designing">Web Designing</option>
+                                    <option value="app-development">App Development</option>
+                                </select>
+
+                                <label for="price">Course price</label>
+                                <input type="number" name="price" class="form-control bg-white mb-4" placeholder="Enter course price" required>
+
+                                <label for="thumbnail">Thumbnail</label>
+                                <input type="file" name="thumbnail" class="form-control bg-white mb-4" required>
+
+                                <label for="duration">Course duration</label>
+                                <input type="text" name="duration" class="form-control bg-white mb-4" placeholder="Enter course duration" required>
                             </div>
                             <input type="submit" name="submit" class="btn btn-success mx-5 mb-2 col-3" value="Add Course">
                         </form>
@@ -95,20 +101,23 @@ if (isset($_POST['submit'])) {
                             <tbody>
                             <tbody>
                                 <?php
-                                $query = mysqli_query($con, "SELECT * FROM classes");
+                                $course_query = mysqli_query($con, "SELECT * FROM courses");
                                 $count = 1;
 
-                                while ($class = mysqli_fetch_object($query)) {
+                                while ($course = mysqli_fetch_object($course_query)) {
                                 ?>
                                     <tr>
                                         <td><?php echo $count; ?></td>
-                                        <td><?php echo $class->title; ?></td>
-                                        <td><?php echo $class->section; ?></td>
+                                        <td><img src="<?php echo $course->course_image; ?>" alt="Course Image" height="100" width="100"></td>
+                                        <td><?php echo $course->course_name; ?></td>
+                                        <td><?php echo $course->category; ?></td>
+                                        <td><?php echo $course->duration; ?></td>
+                                        <td><?php echo $course->price; ?></td>
+                                        <td><?php echo $course->date_added; ?></td>
                                         <td></td>
                                     </tr>
                                 <?php $count++;
                                 } ?>
-                            </tbody>
                             </tbody>
                             <thead>
                                 <tr>
