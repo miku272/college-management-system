@@ -54,7 +54,7 @@ if (isset($_POST['submit'])) {
                                 ?>
                                     <div>
                                         <label for="<?php $count ?>">
-                                            <input type="checkbox" id="<?php $count ?>" value="<?php echo $sections->title; ?>" name="section[]" class="mb-1" required><?php echo $sections->title; ?>
+                                            <input type="checkbox" id="<?php $count ?>" value="<?php echo $sections->title; ?>" name="section[]" class="mb-1"><?php echo $sections->title; ?>
                                         </label>
                                     </div>
                                 <?php $count++;
