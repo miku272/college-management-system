@@ -97,6 +97,12 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
+                                    <a href="<?php echo $site_url; ?>/admin/user_accounts.php?user=counsellor" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Counsellor</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
                                     <a href="<?php echo $site_url; ?>/admin/user_accounts.php?user=teacher" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Teachers</p>

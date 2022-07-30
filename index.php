@@ -1,3 +1,4 @@
+<?php include('includes/config.php'); ?>
 <?php session_start(); ?>
 
 <!DOCTYPE html>
@@ -73,6 +74,7 @@
       <?php if (!isset($_SESSION['signIn'])) { ?>
         <div class="col-lg-6 my-5">
           <div class="w-50 mx-auto">
+            <h4>Student registration and inquiry form</h4>
             <form action="#" method="POST" class="my-5">
               <div class="input-group mb-4">
                 <span class="input-group-text" id="fullName">Full Name</span>
@@ -140,6 +142,38 @@
     </div>
   </div>
 <?php } ?>
+
+<section class="py-5">
+  <div class="text-center mb-5">
+    <h2 class="font-weight-bold">Our Courses</h2>
+    <p class="text-muted">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quod, tempore. Tempore repellendus ut voluptatem neque dicta officia earum, expedita ullam.</p>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <?php
+      $query = mysqli_query($con, "SELECT * FROM courses ORDER BY id DESC LIMIT 0, 8");
+      
+      while($course = mysqli_fetch_object($query)) {
+      ?>
+      <div class="col-lg-3 mb-4">
+        <div class="card">
+          <div><img src="dist/uploads/<?php echo $course->course_image; ?>" class="img-fluid rounded-top" alt="Course Picture"></div>
+          <div class="card-body">
+            <b><?php echo $course->course_name; ?></b>
+            <p class="card-text">
+              <b>Duration: <?php echo $course->duration; ?></b>
+              <b>Price: <?php echo $course->price ?></b>
+            </p>
+            <button class="btn btn-primary">Enroll Now</button>
+          </div>
+        </div>
+      </div>
+      <?php } ?>
+    </div>
+  </div>
+</section>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 </body>
 
