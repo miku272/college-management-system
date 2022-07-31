@@ -136,7 +136,7 @@ if (isset($_POST['submit'])) {
                         <div class="card-body bg-white">
                             <form action="#" class="form-group" method="POST">
                                 <label for="select_class">Select Class</label>
-                                <select name="select_class" class="form-control bg-white mb-4" id="select_class" required>
+                                <select name="select_class" id="select_class" class="form-control bg-white mb-4" id="select_class" required>
                                     <option value="">Select Class</option>
                                     <?php
                                     $args = array('type' => 'class', 'status' => 'publish');
@@ -148,7 +148,7 @@ if (isset($_POST['submit'])) {
                                 </select>
 
                                 <label for="select_section">Select Section</label>
-                                <select name="select_section" class="form-control bg-white mb-4" id="select_section" required>
+                                <select name="select_section" id="select_section" class="form-control bg-white mb-4" id="select_section" required>
                                     <option value="">Select Section</option>
                                 </select>
 

@@ -36,6 +36,22 @@
         });
     }());
 </script>
+
+<!-- For subjects.php -->
+<script>
+    jQuery(document).ready(function () {
+        jQuery('#select_class').change(function () {
+            jQuery.ajax({
+                url: 'ajax.php',
+                type: 'POST',
+                data: {'class_id': jQuery(this).val()},
+                success: function (response) {
+                    jQuery('#select_section').html(response);
+                },
+            });
+        });
+    });
+</script>
 </body>
 
 </html>

@@ -95,12 +95,22 @@ if (isset($_POST['submit'])) {
                                 $classes = get_posts($args);
                                 $count = 1;
 
-                                foreach($classes as $class) {
+                                foreach ($classes as $class) {
                                 ?>
                                     <tr>
                                         <td><?php echo $count; ?></td>
                                         <td><?php echo $class->title; ?></td>
-                                        <td><?php // echo $class->section; ?></td>
+                                        <td>
+                                            <?php
+                                            $class_meta = get_metadata($class->id, 'section');
+
+                                            foreach ($class_meta as $meta){
+                                                $section = get_post(array('id' => $meta->meta_value));
+
+                                                echo $section->title, "<br>";
+                                            }
+                                            ?>
+                                        </td>
                                         <td></td>
                                     </tr>
                                 <?php $count++;
