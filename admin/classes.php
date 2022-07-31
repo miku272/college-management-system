@@ -91,7 +91,7 @@ if (isset($_POST['submit'])) {
                             <tbody>
                             <tbody>
                                 <?php
-                                $query = mysqli_query($con, "SELECT * FROM classes");
+                                $query = mysqli_query($con, "SELECT * FROM posts WHERE type = 'class'");
                                 $count = 1;
 
                                 while ($class = mysqli_fetch_object($query)) {
@@ -99,7 +99,7 @@ if (isset($_POST['submit'])) {
                                     <tr>
                                         <td><?php echo $count; ?></td>
                                         <td><?php echo $class->title; ?></td>
-                                        <td><?php echo $class->section; ?></td>
+                                        <td><?php // echo $class->section; ?></td>
                                         <td></td>
                                     </tr>
                                 <?php $count++;
