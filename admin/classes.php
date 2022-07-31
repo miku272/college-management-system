@@ -91,10 +91,11 @@ if (isset($_POST['submit'])) {
                             <tbody>
                             <tbody>
                                 <?php
-                                $query = mysqli_query($con, "SELECT * FROM posts WHERE type = 'class'");
+                                $args = array('type' => 'class', 'status' => 'publish');
+                                $classes = get_posts($args);
                                 $count = 1;
 
-                                while ($class = mysqli_fetch_object($query)) {
+                                foreach($classes as $class) {
                                 ?>
                                     <tr>
                                         <td><?php echo $count; ?></td>

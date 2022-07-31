@@ -6,4 +6,5 @@ if(!$con) {
     exit;
 }
 
+include('functions.php');
 ?>

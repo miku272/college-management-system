@@ -1,7 +1,4 @@
-<?php
-include('../includes/config.php');
-include('../includes/functions.php');
-?>
+<?php include('../includes/config.php'); ?>
 
 <?php
 if (isset($_POST['submit'])) {
@@ -142,8 +139,9 @@ if (isset($_POST['submit'])) {
                                 <select name="select_class" class="form-control bg-white mb-4" id="select_class" required>
                                     <option value="">Select Class</option>
                                     <?php
-                                    $classes = get_classes($con);
-                                    foreach($classes as $key => $class) {
+                                    $args = array('type' => 'class', 'status' => 'publish');
+                                    $classes = get_posts($args);
+                                    foreach($classes as $class) {
                                     ?>
                                     <option value="<?php echo $class->id; ?>"><?php echo $class->title; ?></option>
                                     <?php } ?>

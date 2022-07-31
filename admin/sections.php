@@ -50,10 +50,11 @@ if(isset($_POST['submit'])) {
                                 </thead>
                                 <tbody>
                                     <?php
-                                    $query = mysqli_query($con, "SELECT * FROM sections");
+                                    $args = array('type' => 'section', 'status' => 'publish');
+                                    $sections = get_posts($args);
                                     $count = 1;
 
-                                    while ($section = mysqli_fetch_object($query)) {
+                                    foreach ($sections as $section) {
                                     ?>
                                         <tr>
                                             <td><?php echo $count; ?></td>
@@ -88,7 +89,7 @@ if(isset($_POST['submit'])) {
                             <form action="" method="POST">
                                 <div class="form-group px-5 py-3">
                                     <label for="title">Title</label>
-                                    <input type="text" name="title" class="form-control bg-white mb-4" placeholder="Enter title" required>
+                                    <input type="text" name="title" class="form-control bg-white" placeholder="Enter title" required>
                                 </div>
                                 <input type="submit" name="submit" class="btn btn-success mx-5 mb-2 col-3" value="Add Section">
                             </form>
