@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jul 30, 2022 at 05:18 PM
+-- Generation Time: Jul 31, 2022 at 06:45 PM
 -- Server version: 5.7.36
 -- PHP Version: 7.4.26
 
@@ -99,6 +99,59 @@ INSERT INTO `courses` (`id`, `course_name`, `category`, `duration`, `price`, `da
 (1, 'Advanced Web Designing', 'programming', '45 hours', 15000, '2022-07-29 10:57:24', 'web_designing.jpg'),
 (2, 'Flutter', 'app-development', '30 hours', 15000, '2022-07-29 00:00:00', 'web_designing.jpg'),
 (5, 'HTML', 'web-designing', '30 hours', 10000, '2022-07-29 00:00:00', 'web_designing.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `metadata`
+--
+
+DROP TABLE IF EXISTS `metadata`;
+CREATE TABLE IF NOT EXISTS `metadata` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `item_id` int(11) NOT NULL,
+  `meta_key` text NOT NULL,
+  `meta_value` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `metadata`
+--
+
+INSERT INTO `metadata` (`id`, `item_id`, `meta_key`, `meta_value`) VALUES
+(1, 2, 'section', '3'),
+(2, 2, 'section', '4');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `posts`
+--
+
+DROP TABLE IF EXISTS `posts`;
+CREATE TABLE IF NOT EXISTS `posts` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `author` int(11) NOT NULL,
+  `title` text NOT NULL,
+  `description` text NOT NULL,
+  `type` varchar(100) NOT NULL,
+  `publish_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `modified_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `status` varchar(50) NOT NULL,
+  `parent` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `posts`
+--
+
+INSERT INTO `posts` (`id`, `author`, `title`, `description`, `type`, `publish_date`, `modified_date`, `status`, `parent`) VALUES
+(1, 1, 'Class -1', 'Class -1 Description', 'class', '2021-06-20 02:32:16', '2021-06-20 02:32:16', 'publish', 0),
+(2, 1, 'Class -2', 'Class -2 Description', 'class', '2021-06-20 02:32:16', '2021-06-20 02:32:16', 'publish', 0),
+(3, 1, 'Section A', 'Section A Description', 'section', '2021-06-20 02:33:48', '2021-06-20 02:33:48', 'publish', 0),
+(4, 1, 'Section B', 'Section B Description', 'section', '2021-06-20 02:33:48', '2021-06-20 02:33:48', 'publish', 0);
 
 -- --------------------------------------------------------
 
