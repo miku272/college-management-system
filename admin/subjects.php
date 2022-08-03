@@ -141,16 +141,18 @@ if (isset($_POST['submit'])) {
                                     <?php
                                     $args = array('type' => 'class', 'status' => 'publish');
                                     $classes = get_posts($args);
-                                    foreach($classes as $class) {
+                                    foreach ($classes as $class) {
                                     ?>
-                                    <option value="<?php echo $class->id; ?>"><?php echo $class->title; ?></option>
+                                        <option value="<?php echo $class->id; ?>"><?php echo $class->title; ?></option>
                                     <?php } ?>
                                 </select>
 
-                                <label for="select_section">Select Section</label>
-                                <select name="select_section" id="select_section" class="form-control bg-white mb-4" id="select_section" required>
-                                    <option value="">Select Section</option>
-                                </select>
+                                <div class="form-group" id="section-container" style="display:none">
+                                    <label for="select_section">Select Section</label>
+                                    <select require name="select_section" id="select_section" class="form-control bg-white">
+                                        <option value="">-Select Section-</option>
+                                    </select>
+                                </div>
 
                                 <label for="input_subject">Select Section</label>
                                 <input type="text" name="input_subject" placeholder="Enter subject" id="input_subject" class="form-control bg-white mb-5" required>
@@ -176,11 +178,7 @@ if (isset($_POST['submit'])) {
                                     <thead>
                                         <tr>
                                             <th>Sr no.</th>
-                                            <th></th>
                                             <th>Name</th>
-                                            <th>Category</th>
-                                            <th>Duration</th>
-                                            <th>Price</th>
                                             <th>Added Date</th>
                                             <th>Actions</th>
                                         </tr>
@@ -188,19 +186,19 @@ if (isset($_POST['submit'])) {
                                     <tbody>
                                     <tbody>
                                         <?php
-                                        $course_query = mysqli_query($con, "SELECT * FROM courses");
                                         $count = 1;
+                                        $args = array(
+                                            'type' => 'subject',
+                                            'status' => 'publish'
+                                        );
+                                        $subjects = get_posts($args);
 
-                                        while ($course = mysqli_fetch_object($course_query)) {
+                                        foreach ($subjects as $subject) {
                                         ?>
                                             <tr>
                                                 <td><?php echo $count; ?></td>
-                                                <td><img src="../dist/uploads/<?php echo $course->course_image; ?>" alt="Course Image" height="100" width="100" class="border"></td>
-                                                <td><?php echo $course->course_name; ?></td>
-                                                <td><?php echo $course->category; ?></td>
-                                                <td><?php echo $course->duration; ?></td>
-                                                <td><?php echo $course->price; ?></td>
-                                                <td><?php echo $course->date_added; ?></td>
+                                                <td><?php echo $subject->title; ?></td>
+                                                <td><?php echo $subject->date_added; ?></td>
                                                 <td></td>
                                             </tr>
                                         <?php $count++;
@@ -209,11 +207,7 @@ if (isset($_POST['submit'])) {
                                     <thead>
                                         <tr>
                                             <th>Sr no.</th>
-                                            <th></th>
                                             <th>Name</th>
-                                            <th>Category</th>
-                                            <th>Duration</th>
-                                            <th>Price</th>
                                             <th>Added Date</th>
                                             <th>Actions</th>
                                         </tr>

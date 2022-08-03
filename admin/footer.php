@@ -39,15 +39,23 @@
 
 <!-- For subjects.php -->
 <script>
-    jQuery(document).ready(function () {
-        jQuery('#select_class').change(function () {
+    jQuery(document).ready(function() {
+        jQuery('#select_class').change(function() {
             jQuery.ajax({
                 url: 'ajax.php',
                 type: 'POST',
-                data: {'class_id': jQuery(this).val()},
-                success: function (response) {
-                    jQuery('#select_section').html(response);
+                data: {
+                    'class_id': jQuery(this).val()
                 },
+                dataType: 'json',
+                success: function(response) {
+                    if (response.count > 0) {
+                        jQuery('#section-container').show();
+                        jQuery('#select_section').html(response.options);
+                    } else {
+                        jQuery('#section-container').hide();
+                    }
+                }
             });
         });
     });
