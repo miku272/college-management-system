@@ -27,7 +27,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-4">
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="index.php">Home</a>
           </li>
           <li class="nav-item">
@@ -38,15 +38,15 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Events</a>
-          </li>
+          </li> -->
         </ul>
         <?php if (!isset($_SESSION['signIn'])) { ?>
-          <form class="d-flex" role="search">
+          <form class="d-flex float-right" role="search">
             <a class="btn btn-outline-success" href="signIn.php">Sign In</a>
           </form>
         <?php } else { ?>
           <form class="d-flex" role="search">
-            <a class="btn btn-outline-primary me-5" href="#">My Profile</a>
+            <a class="btn btn-outline-primary me-5" href="admin/dashboard.php">Dashboard</a>
           </form>
           <form class="d-flex" role="search">
             <a class="btn btn-outline-danger" href="actions/logout.php">Log Out</a>
