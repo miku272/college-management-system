@@ -103,18 +103,17 @@ if (isset($_POST['submit'])) {
                                 <label for="category">Course Category</label>
                                 <select name="category" class="form-control bg-white mb-4">
                                     <option value="">Select Category</option>
-                                    <option value="programming">Programming</option>
-                                    <option value="web-designing">Web Designing</option>
-                                    <option value="app-development">App Development</option>
+                                    <option value="web-designing">Business and Management</option>
+                                    <option value="programming">Computer Science and IT</option>
                                 </select>
 
-                                <label for="price">Course price</label>
+                                <label for="price">Course price (Per Year)</label>
                                 <input type="number" name="price" class="form-control bg-white mb-4" placeholder="Enter course price" required>
 
                                 <label for="thumbnail">Thumbnail</label>
                                 <input type="file" name="thumbnail" class="form-control bg-white mb-4" required>
 
-                                <label for="duration">Course duration</label>
+                                <label for="duration">Course duration (In Years)</label>
                                 <input type="text" name="duration" class="form-control bg-white mb-4" placeholder="Enter course duration" required>
                             </div>
                             <input type="submit" name="submit" class="btn btn-success mx-5 mb-2 col-3" value="Add Course">
@@ -143,8 +142,8 @@ if (isset($_POST['submit'])) {
                                     <th></th>
                                     <th>Name</th>
                                     <th>Category</th>
-                                    <th>Duration</th>
-                                    <th>Price</th>
+                                    <th>Duration (In Years)</th>
+                                    <th>Price (Per year)</th>
                                     <th>Added Date</th>
                                     <th>Actions</th>
                                 </tr>
@@ -172,12 +171,12 @@ if (isset($_POST['submit'])) {
                             </tbody>
                             <thead>
                                 <tr>
-                                    <th>Sr no.</th>
+                                <th>Sr no.</th>
                                     <th></th>
                                     <th>Name</th>
                                     <th>Category</th>
-                                    <th>Duration</th>
-                                    <th>Price</th>
+                                    <th>Duration (In Years)</th>
+                                    <th>Price (Per year)</th>
                                     <th>Added Date</th>
                                     <th>Actions</th>
                                 </tr>

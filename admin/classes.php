@@ -83,7 +83,7 @@ if (isset($_POST['submit'])) {
                             <thead>
                                 <tr>
                                     <th>Sr no.</th>
-                                    <th>Class</th>
+                                    <th>Class (Year)</th>
                                     <th>Sections</th>
                                     <th>Actions</th>
                                 </tr>
@@ -119,7 +119,7 @@ if (isset($_POST['submit'])) {
                             <thead>
                                 <tr>
                                     <th>Sr no.</th>
-                                    <th>Class</th>
+                                    <th>Class (Year)</th>
                                     <th>Sections</th>
                                     <th>Actions</th>
                                 </tr>

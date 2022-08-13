@@ -24,23 +24,255 @@
     <div class="container-fluid">
         <div class="card">
             <div class="card-body">
-
-                <form action="" class="form-group">
+                <form action="" class="form-group" method="POST">
                     <div class="row">
                         <div class="col-lg-6">
-                            <select name="time_table_select" id="time_table_select" class="form-control">
-                                <option value="">Select Class</option>
-                                <option value="1">Class 1</option>
-                                <option value="2">Class 2</option>
+                            <label for="select_class">Select Class</label>
+                            <select name="select_class" id="select_class" class="form-control bg-white mb-4" id="select_class" required>
+                                <option value="">Select Class (Year)</option>
+                                <?php
+                                $args = array('type' => 'class', 'status' => 'publish');
+                                $classes = get_posts($args);
+                                foreach ($classes as $class) {
+                                ?>
+                                    <option value="<?php echo $class->id; ?>"><?php echo $class->title; ?></option>
+                                <?php } ?>
                             </select>
                         </div>
                         <div class="col-lg-6">
-                            
+                            <div class="form-group" id="section-container" style="display:none">
+                                <label for="select_section">Select Section (Semester)</label>
+                                <select require name="select_section" id="select_section" class="form-control bg-white">
+                                    <option value="">-Select Section-</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
-                </form>
             </div>
+            </form>
         </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <table class="table table-bordered bg-white">
+                <thead>
+                    <tr>
+                        <th>Timing</th>
+                        <th>Monday</th>
+                        <th>Tuesday</th>
+                        <th>Wednesday</th>
+                        <th>Thursday</th>
+                        <th>Friday</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>9:10 AM - 10:00 AM</td>
+                        <td>
+                            <p>
+                                <b>Sub: </b> Sub name<br>
+                                <b>Teacher: </b> Teacher name
+                            </p>
+                        </td>
+                        <td>
+                            <p>
+                                <b>Sub: </b> Sub name<br>
+                                <b>Teacher: </b> Teacher name
+                            </p>
+                        </td>
+                        <td>
+                            <p>
+                                <b>Sub: </b> Sub name<br>
+                                <b>Teacher: </b> Teacher name
+                            </p>
+                        </td>
+                        <td>
+                            <p>
+                                <b>Sub: </b> Sub name<br>
+                                <b>Teacher: </b> Teacher name
+                            </p>
+                        </td>
+                        <td>
+                            <p>
+                                <b>Sub: </b> Sub name<br>
+                                <b>Teacher: </b> Teacher name
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>10:00 AM - 10:50 AM</td>
+                        <td>
+                            <p>
+                                <b>Sub: </b> Sub name<br>
+                                <b>Teacher: </b> Teacher name
+                            </p>
+                        </td>
+                        <td>
+                            <p>
+                                <b>Sub: </b> Sub name<br>
+                                <b>Teacher: </b> Teacher name
+                            </p>
+                        </td>
+                        <td>
+                            <p>
+                                <b>Sub: </b> Sub name<br>
+                                <b>Teacher: </b> Teacher name
+                            </p>
+                        </td>
+                        <td>
+                            <p>
+                                <b>Sub: </b> Sub name<br>
+                                <b>Teacher: </b> Teacher name
+                            </p>
+                        </td>
+                        <td>
+                            <p>
+                                <b>Sub: </b> Sub name<br>
+                                <b>Teacher: </b> Teacher name
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>10:50 AM - 11:40 AM</td>
+                        <td>
+                            <p>
+                                <b>Sub: </b> Sub name<br>
+                                <b>Teacher: </b> Teacher name
+                            </p>
+                        </td>
+                        <td>
+                            <p>
+                                <b>Sub: </b> Sub name<br>
+                                <b>Teacher: </b> Teacher name
+                            </p>
+                        </td>
+                        <td>
+                            <p>
+                                <b>Sub: </b> Sub name<br>
+                                <b>Teacher: </b> Teacher name
+                            </p>
+                        </td>
+                        <td>
+                            <p>
+                                <b>Sub: </b> Sub name<br>
+                                <b>Teacher: </b> Teacher name
+                            </p>
+                        </td>
+                        <td>
+                            <p>
+                                <b>Sub: </b> Sub name<br>
+                                <b>Teacher: </b> Teacher name
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>11:40 AM - 12:30 PM</td>
+                        <td colspan="5" class="text-center"><b style="font-size: 2rem;">Break</b></td>
+                    </tr>
+                    <tr>
+                        <td>12:30 PM - 01:20 PM</td>
+                        <td>
+                            <p>
+                                <b>Sub: </b> Sub name<br>
+                                <b>Teacher: </b> Teacher name
+                            </p>
+                        </td>
+                        <td>
+                            <p>
+                                <b>Sub: </b> Sub name<br>
+                                <b>Teacher: </b> Teacher name
+                            </p>
+                        </td>
+                        <td>
+                            <p>
+                                <b>Sub: </b> Sub name<br>
+                                <b>Teacher: </b> Teacher name
+                            </p>
+                        </td>
+                        <td>
+                            <p>
+                                <b>Sub: </b> Sub name<br>
+                                <b>Teacher: </b> Teacher name
+                            </p>
+                        </td>
+                        <td>
+                            <p>
+                                <b>Sub: </b> Sub name<br>
+                                <b>Teacher: </b> Teacher name
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>01:20 PM - 02:10 PM</td>
+                        <td>
+                            <p>
+                                <b>Sub: </b> Sub name<br>
+                                <b>Teacher: </b> Teacher name
+                            </p>
+                        </td>
+                        <td>
+                            <p>
+                                <b>Sub: </b> Sub name<br>
+                                <b>Teacher: </b> Teacher name
+                            </p>
+                        </td>
+                        <td>
+                            <p>
+                                <b>Sub: </b> Sub name<br>
+                                <b>Teacher: </b> Teacher name
+                            </p>
+                        </td>
+                        <td>
+                            <p>
+                                <b>Sub: </b> Sub name<br>
+                                <b>Teacher: </b> Teacher name
+                            </p>
+                        </td>
+                        <td>
+                            <p>
+                                <b>Sub: </b> Sub name<br>
+                                <b>Teacher: </b> Teacher name
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>02:10 PM - 03:00 PM</td>
+                        <td>
+                            <p>
+                                <b>Sub: </b> Sub name<br>
+                                <b>Teacher: </b> Teacher name
+                            </p>
+                        </td>
+                        <td>
+                            <p>
+                                <b>Sub: </b> Sub name<br>
+                                <b>Teacher: </b> Teacher name
+                            </p>
+                        </td>
+                        <td>
+                            <p>
+                                <b>Sub: </b> Sub name<br>
+                                <b>Teacher: </b> Teacher name
+                            </p>
+                        </td>
+                        <td>
+                            <p>
+                                <b>Sub: </b> Sub name<br>
+                                <b>Teacher: </b> Teacher name
+                            </p>
+                        </td>
+                        <td>
+                            <p>
+                                <b>Sub: </b> Sub name<br>
+                                <b>Teacher: </b> Teacher name
+                            </p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
     </div>
 </section>
 <!-- /.content -->

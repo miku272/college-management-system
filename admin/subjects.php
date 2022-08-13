@@ -137,7 +137,7 @@ if (isset($_POST['submit'])) {
                             <form action="#" class="form-group" method="POST">
                                 <label for="select_class">Select Class</label>
                                 <select name="select_class" id="select_class" class="form-control bg-white mb-4" id="select_class" required>
-                                    <option value="">Select Class</option>
+                                    <option value="">Select Class (Year)</option>
                                     <?php
                                     $args = array('type' => 'class', 'status' => 'publish');
                                     $classes = get_posts($args);
@@ -148,7 +148,7 @@ if (isset($_POST['submit'])) {
                                 </select>
 
                                 <div class="form-group" id="section-container" style="display:none">
-                                    <label for="select_section">Select Section</label>
+                                    <label for="select_section">Select Section (Semester)</label>
                                     <select require name="select_section" id="select_section" class="form-control bg-white">
                                         <option value="">-Select Section-</option>
                                     </select>
