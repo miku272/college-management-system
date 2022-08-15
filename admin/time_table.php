@@ -74,7 +74,15 @@
                     foreach ($periods as $period) {
                     ?>
                         <tr>
-                            <td>9:10 AM - 10:00 AM</td>
+                            <td><?php
+                            $from = get_metadata($period->id, 'from')[0]->meta_value;
+
+                            echo date('h:i A', strtotime($from));
+                            ?> - <?php
+                            $to = get_metadata($period->id, 'to')[0]->meta_value;
+
+                            echo date('h:i A', strtotime($to));
+                            ?></td>
                             <?php
                             $days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'];
 

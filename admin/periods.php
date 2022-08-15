@@ -1,17 +1,26 @@
 <?php include('../includes/config.php'); ?>
 
 <?php
-if(isset($_POST['submit'])) {
+if (isset($_POST['submit'])) {
     $title = $_POST['title'];
     $from = $_POST['from'];
     $to = $_POST['to'];
+    $type = 'period';
     $status = 'publish';
     $date_added = date('Y-m-d');
 
-    $query = mysqli_query($con, "INSERT INTO posts (title, status, publish_date) VALUES ('$title', '$status', '$date_added')");
+    $query = mysqli_query($con, "INSERT INTO posts (title, status, type, publish_date) VALUES ('$title', '$status', '$type', '$date_added')");
 
-    if($query) {
-        $last_id = mysqli_insert_id($con);
+    if ($query) {
+        $post_id = mysqli_insert_id($con); // Returns the id of last inserted row
+
+        mysqli_query($con, "INSERT INTO metadata (meta_key, meta_value, item_id) VALUES ('from', '$from', '$post_id')");
+        mysqli_query($con, "INSERT INTO metadata (meta_key, meta_value, item_id) VALUES ('to', '$to', '$post_id')");
+
+        // header('location: ./periods.php');
+        echo "<script>alert('Data inserted successfully');</script>";
+    } else {
+        echo "<script>alert('Some error occoured');</script>";
     }
 }
 ?>
@@ -70,8 +79,20 @@ if(isset($_POST['submit'])) {
                                         <tr>
                                             <td><?php echo $count; ?></td>
                                             <td><?php echo $period->title; ?></td>
-                                            <td></td>
-                                            <td></td>
+                                            <td>
+                                                <?php
+                                                $from = get_metadata($period->id, 'from')[0]->meta_value;
+
+                                                echo date('h:i A', strtotime($from));
+                                                ?>
+                                            </td>
+                                            <td>
+                                                <?php
+                                                $to = get_metadata($period->id, 'to')[0]->meta_value;
+
+                                                echo date('h:i A', strtotime($to));
+                                                ?>
+                                            </td>
                                             <td></td>
                                         </tr>
                                     <?php $count++;
