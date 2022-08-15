@@ -1,4 +1,43 @@
 <?php include('../includes/config.php'); ?>
+
+<?php
+if (isset($_POST['submit'])) {
+    $class = $_POST['select_class'];
+    $section = $_POST['select_section'];
+    $teacher = $_POST['select_teacher'];
+    $period = $_POST['select_period'];
+    $day = $_POST['select_day'];
+    $subject = $_POST['select_subject'];
+    $date_added = date('Y-m-d');
+    $status = 'publish';
+    $type = 'time_table';
+    $title = $day . " ";
+
+    $query = mysqli_query($con, "INSERT INTO posts (type, status, publish_date) VALUES ('$type', '$status', '$date_added')");
+
+    if ($query) {
+        $item_id = mysqli_insert_id($con);
+
+        $metadata = array(
+            'class_id' => $class,
+            'section_id' => $section,
+            'teacher_id' => $teacher,
+            'period_id' => $period,
+            'day_name' => $day,
+            'subject_id' => $subject,
+        );
+
+        foreach ($metadata as $key => $value) {
+            mysqli_query($con, "INSERT INTO metadata (item_id, meta_key, meta_value) VALUES ('$item_id', '$key', '$value')");
+        }
+
+        echo "<script>alert('Data inserted Successfully');</script>";
+    } else {
+        echo "<script>alert('Some error occured!');</script>";
+    }
+}
+?>
+
 <?php include('header.php'); ?>
 <?php include('side_bar.php'); ?>
 
@@ -46,7 +85,7 @@
                             <div class="col-6">
                                 <div class="form-group" id="section-container">
                                     <label for="select_section">Select Section (Semester)</label>
-                                    <select require name="select_section" id="select_section" class="form-control bg-white">
+                                    <select require name="select_section" id="select_section" class="form-control bg-white" required>
                                         <option value="">Select Section (Semester)</option>
                                     </select>
                                 </div>
@@ -54,7 +93,7 @@
                             <div class="col-6">
                                 <div class="form-group" id="teacher-container">
                                     <label for="select_teacher">Select Teacher</label>
-                                    <select require name="select_teacher" id="select_teacher" class="form-control bg-white">
+                                    <select require name="select_teacher" id="select_teacher" class="form-control bg-white" required>
                                         <option value="">Select Teacher</option>
                                         <option value="1">Teacher 1</option>
                                         <option value="2">Teacher 2</option>
@@ -64,7 +103,7 @@
                             <div class="col-6">
                                 <div class="form-group" id="period-container">
                                     <label for="select_period">Select Period</label>
-                                    <select require name="select_period" id="select_period" class="form-control bg-white">
+                                    <select require name="select_period" id="select_period" class="form-control bg-white" required>
                                         <option value="">Select Period</option>
                                         <?php
                                         $args = array('type' => 'period', 'status' => 'publish');
@@ -79,7 +118,7 @@
                             <div class="col-6">
                                 <div class="form-group" id="day-container">
                                     <label for="select_day">Select Day</label>
-                                    <select require name="select_day" id="select_day" class="form-control bg-white">
+                                    <select require name="select_day" id="select_day" class="form-control bg-white" required>
                                         <option value="">Select Day</option>
                                         <?php
                                         $days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'];
@@ -94,7 +133,7 @@
                             <div class="col-6">
                                 <div class="form-group" id="subject-container">
                                     <label for="select_subject">Select Subject</label>
-                                    <select require name="select_subject" id="select_subject" class="form-control bg-white">
+                                    <select require name="select_subject" id="select_subject" class="form-control bg-white" required>
                                         <option value="">Select Subject</option>
                                         <option value="1">Subject 1</option>
                                         <option value="2">Subject 2</option>
@@ -180,7 +219,12 @@
                             ?>
                                         <td>
                                             <p>
-                                                <b>Sub: </b> Sub name<br>
+                                                <b>Sub: </b>
+                                                <?php
+                                                $subject_id = get_metadata($time_table->item_id, 'subject_id')[0]->meta_value;
+                                                echo get_post(array('id'=>$subject_id))->title;
+                                                ?>
+                                                <br>
                                                 <b>Teacher: </b> <?php
                                                                     $teacher_id = get_metadata($time_table->item_id, 'teacher_id')[0]->meta_value;
                                                                     echo get_user_data($teacher_id)[0]->user_name;
@@ -209,4 +253,26 @@
 </div>
 </section>
 <!-- /.content -->
+<!-- <script>
+    jQuery(document).ready(function() {
+        jQuery('#select_class').change(function() {
+            jQuery.ajax({
+                url: 'ajax.php',
+                type: 'POST',
+                data: {
+                    'class_id': jQuery(this).val()
+                },
+                dataType: 'json',
+                success: function(response) {
+                    if (response.count > 0) {
+                        jQuery('#section-container').show();
+                        jQuery('#select_section').html(response.options);
+                    } else {
+                        jQuery('#section-container').hide();
+                    }
+                }
+            });
+        });
+    });
+</script> -->
 <?php include('footer.php'); ?>

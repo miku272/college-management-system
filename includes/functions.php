@@ -87,7 +87,7 @@ function data_output($query, $type = 'object')
     return $output;
 }
 
-function get_user_data($user_id, $type = 'object') 
+function get_user_data($user_id, $type = 'object')
 {
     global $con;
     $query = mysqli_query($con, "SELECT * FROM accounts WHERE id = $user_id");

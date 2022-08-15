@@ -23,6 +23,8 @@ if (!isset($_SESSION['signIn'])) header('Location: ../signIn.php');
     <link rel="stylesheet" href="../plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="../dist/css/adminlte.min.css">
+    <!-- jQuery -->
+    <script src="../plugins/jquery/jquery.min.js"></script>
 </head>
 
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
