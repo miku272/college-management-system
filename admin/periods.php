@@ -1,4 +1,21 @@
 <?php include('../includes/config.php'); ?>
+
+<?php
+if(isset($_POST['submit'])) {
+    $title = $_POST['title'];
+    $from = $_POST['from'];
+    $to = $_POST['to'];
+    $status = 'publish';
+    $date_added = date('Y-m-d');
+
+    $query = mysqli_query($con, "INSERT INTO posts (title, status, publish_date) VALUES ('$title', '$status', '$date_added')");
+
+    if($query) {
+        $last_id = mysqli_insert_id($con);
+    }
+}
+?>
+
 <?php include('header.php'); ?>
 <?php include('side_bar.php'); ?>
 
