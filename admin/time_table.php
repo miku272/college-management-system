@@ -67,9 +67,44 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>9:10 AM - 10:00 AM</td>
-                        <td>
+                    <?php
+                    $args = array('type' => 'period', 'status' => 'publish');
+                    $periods = get_posts($args);
+
+                    foreach ($periods as $period) {
+                    ?>
+                        <tr>
+                            <td>9:10 AM - 10:00 AM</td>
+                            <?php
+                            $days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'];
+
+                            foreach ($days as $day) {
+                                $query = mysqli_query($con, "SELECT * FROM posts AS p INNER JOIN metadata AS md ON (md.item_id = p.id) INNER JOIN metadata AS mp ON (mp.item_id = p.id) WHERE p.type = 'time_table' AND p.status = 'publish' AND md.meta_key = 'day_name' AND md.meta_value = '$day' AND mp.meta_key = 'period_id' AND mp.meta_value = $period->id");
+
+                                if (mysqli_num_rows($query) > 0) {
+                                    while ($time_table = mysqli_fetch_object($query)) {
+                            ?>
+                                        <td>
+                                            <p>
+                                                <b>Sub: </b> Sub name<br>
+                                                <b>Teacher: </b> <?php
+                                                $teacher_id = get_metadata($time_table->item_id, 'teacher_id')[0]->meta_value;
+                                                echo get_user_data($teacher_id)[0]->user_name;
+                                                ?>
+                                            </p>
+                                        </td>
+                                    <?php }
+                                } else { ?>
+                                    <td>
+                                        <!-- <p>
+                                            <b>Sub: </b> Sub name<br>
+                                            <b>Teacher: </b> <?php // echo get_metadata($time_table->item_id, 'teacher_id')[0]->meta_value; ?>
+                                        </p> -->
+                                        Unscheduled
+                                    </td>
+                            <?php }
+                            } ?>
+                            <!-- <td>
                             <p>
                                 <b>Sub: </b> Sub name<br>
                                 <b>Teacher: </b> Teacher name
@@ -92,15 +127,10 @@
                                 <b>Sub: </b> Sub name<br>
                                 <b>Teacher: </b> Teacher name
                             </p>
-                        </td>
-                        <td>
-                            <p>
-                                <b>Sub: </b> Sub name<br>
-                                <b>Teacher: </b> Teacher name
-                            </p>
-                        </td>
-                    </tr>
-                    <tr>
+                        </td> -->
+                        </tr>
+                    <?php } ?>
+                    <!-- <tr>
                         <td>10:00 AM - 10:50 AM</td>
                         <td>
                             <p>
@@ -268,7 +298,7 @@
                                 <b>Teacher: </b> Teacher name
                             </p>
                         </td>
-                    </tr>
+                    </tr> -->
                 </tbody>
             </table>
         </div>

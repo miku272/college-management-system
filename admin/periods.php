@@ -83,7 +83,7 @@
                                     <label for="title">Title</label>
                                     <input type="text" name="title" class="form-control bg-white" placeholder="Enter title" required>
                                 </div>
-                                <input type="submit" name="submit" class="btn btn-success mx-5 mb-2 col-3" value="Add Section">
+                                <input type="submit" name="submit" class="btn btn-success mx-5 mb-2 col-3" value="Add Period">
                             </form>
                         </div>
                     </div>
