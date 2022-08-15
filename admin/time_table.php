@@ -25,67 +25,118 @@
 <!-- Main content -->
 <section class="content">
     <div class="container-fluid">
-        <?php if(isset($_GET['action']) && $_GET['action'] == 'add') { ?>
+        <?php if (isset($_GET['action']) && $_GET['action'] == 'add') { ?>
             <div class="card">
                 <div class="card-body">
-                <form action="" class="form-group" method="POST">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <label for="select_class">Select Class (Year)</label>
-                            <select name="select_class" id="select_class" class="form-control bg-white mb-4" id="select_class" required>
-                                <option value="">Select Class (Year)</option>
-                                <?php
-                                $args = array('type' => 'class', 'status' => 'publish');
-                                $classes = get_posts($args);
-                                foreach ($classes as $class) {
-                                ?>
-                                    <option value="<?php echo $class->id; ?>"><?php echo $class->title; ?></option>
-                                <?php } ?>
-                            </select>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group" id="section-container" style="display:none">
-                                <label for="select_section">Select Section (Semester)</label>
-                                <select require name="select_section" id="select_section" class="form-control bg-white">
-                                    <option value="">Select Section (Semester)</option>
+                    <form action="" class="form-group" method="POST">
+                        <div class="row">
+                            <div class="col-6">
+                                <label for="select_class">Select Class (Year)</label>
+                                <select name="select_class" id="select_class" class="form-control bg-white mb-4" id="select_class" required>
+                                    <option value="">Select Class (Year)</option>
+                                    <?php
+                                    $args = array('type' => 'class', 'status' => 'publish');
+                                    $classes = get_posts($args);
+                                    foreach ($classes as $class) {
+                                    ?>
+                                        <option value="<?php echo $class->id; ?>"><?php echo $class->title; ?></option>
+                                    <?php } ?>
                                 </select>
                             </div>
+                            <div class="col-6">
+                                <div class="form-group" id="section-container">
+                                    <label for="select_section">Select Section (Semester)</label>
+                                    <select require name="select_section" id="select_section" class="form-control bg-white">
+                                        <option value="">Select Section (Semester)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group" id="teacher-container">
+                                    <label for="select_teacher">Select Teacher</label>
+                                    <select require name="select_teacher" id="select_teacher" class="form-control bg-white">
+                                        <option value="">Select Teacher</option>
+                                        <option value="1">Teacher 1</option>
+                                        <option value="2">Teacher 2</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group" id="period-container">
+                                    <label for="select_period">Select Period</label>
+                                    <select require name="select_period" id="select_period" class="form-control bg-white">
+                                        <option value="">Select Period</option>
+                                        <?php
+                                        $args = array('type' => 'period', 'status' => 'publish');
+                                        $periods = get_posts($args);
+                                        foreach ($periods as $period) {
+                                        ?>
+                                            <option value="<?php echo $period->id; ?>"><?php echo $period->title; ?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group" id="day-container">
+                                    <label for="select_day">Select Day</label>
+                                    <select require name="select_day" id="select_day" class="form-control bg-white">
+                                        <option value="">Select Day</option>
+                                        <?php
+                                        $days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'];
+
+                                        foreach ($days as $day) {
+                                        ?>
+                                            <option value="<?php echo $day; ?>"><?php echo ucwords($day); ?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group" id="subject-container">
+                                    <label for="select_subject">Select Subject</label>
+                                    <select require name="select_subject" id="select_subject" class="form-control bg-white">
+                                        <option value="">Select Subject</option>
+                                        <option value="1">Subject 1</option>
+                                        <option value="2">Subject 2</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <input type="submit" class="btn btn-lg btn-success mt-4 col-12" name="submit" value="Add">
                         </div>
-                    </div>
-                </form>
+                    </form>
                 </div>
             </div>
-        <?php } else {?>
+        <?php } else { ?>
 
-        <div class="card">
-            <div class="card-body">
-                <form action="" class="form-group" method="POST">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <label for="select_class">Select Class</label>
-                            <select name="select_class" id="select_class" class="form-control bg-white mb-4" id="select_class" required>
-                                <option value="">Select Class (Year)</option>
-                                <?php
-                                $args = array('type' => 'class', 'status' => 'publish');
-                                $classes = get_posts($args);
-                                foreach ($classes as $class) {
-                                ?>
-                                    <option value="<?php echo $class->id; ?>"><?php echo $class->title; ?></option>
-                                <?php } ?>
-                            </select>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group" id="section-container" style="display:none">
-                                <label for="select_section">Select Section (Semester)</label>
-                                <select require name="select_section" id="select_section" class="form-control bg-white">
-                                    <option value="">Select Section (Semester)</option>
+            <div class="card">
+                <div class="card-body">
+                    <form action="" class="form-group" method="POST">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <label for="select_class">Select Class</label>
+                                <select name="select_class" id="select_class" class="form-control bg-white mb-4" id="select_class" required>
+                                    <option value="">Select Class (Year)</option>
+                                    <?php
+                                    $args = array('type' => 'class', 'status' => 'publish');
+                                    $classes = get_posts($args);
+                                    foreach ($classes as $class) {
+                                    ?>
+                                        <option value="<?php echo $class->id; ?>"><?php echo $class->title; ?></option>
+                                    <?php } ?>
                                 </select>
                             </div>
+                            <div class="col-lg-6">
+                                <div class="form-group" id="section-container" style="display:none">
+                                    <label for="select_section">Select Section (Semester)</label>
+                                    <select require name="select_section" id="select_section" class="form-control bg-white">
+                                        <option value="">Select Section (Semester)</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
-        </div>
     </div>
 
     <div class="card">
@@ -110,14 +161,14 @@
                     ?>
                         <tr>
                             <td><?php
-                            $from = get_metadata($period->id, 'from')[0]->meta_value;
+                                $from = get_metadata($period->id, 'from')[0]->meta_value;
 
-                            echo date('h:i A', strtotime($from));
-                            ?> - <?php
-                            $to = get_metadata($period->id, 'to')[0]->meta_value;
+                                echo date('h:i A', strtotime($from));
+                                ?> - <?php
+                                        $to = get_metadata($period->id, 'to')[0]->meta_value;
 
-                            echo date('h:i A', strtotime($to));
-                            ?></td>
+                                        echo date('h:i A', strtotime($to));
+                                        ?></td>
                             <?php
                             $days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'];
 
@@ -131,9 +182,9 @@
                                             <p>
                                                 <b>Sub: </b> Sub name<br>
                                                 <b>Teacher: </b> <?php
-                                                $teacher_id = get_metadata($time_table->item_id, 'teacher_id')[0]->meta_value;
-                                                echo get_user_data($teacher_id)[0]->user_name;
-                                                ?>
+                                                                    $teacher_id = get_metadata($time_table->item_id, 'teacher_id')[0]->meta_value;
+                                                                    echo get_user_data($teacher_id)[0]->user_name;
+                                                                    ?>
                                             </p>
                                         </td>
                                     <?php }
@@ -141,7 +192,8 @@
                                     <td>
                                         <!-- <p>
                                             <b>Sub: </b> Sub name<br>
-                                            <b>Teacher: </b> <?php // echo get_metadata($time_table->item_id, 'teacher_id')[0]->meta_value; ?>
+                                            <b>Teacher: </b> <?php // echo get_metadata($time_table->item_id, 'teacher_id')[0]->meta_value; 
+                                                                ?>
                                         </p> -->
                                         Unscheduled
                                     </td>
@@ -153,8 +205,8 @@
             </table>
         </div>
     </div>
-    <?php } ?>
-    </div>
+<?php } ?>
+</div>
 </section>
 <!-- /.content -->
 <?php include('footer.php'); ?>
