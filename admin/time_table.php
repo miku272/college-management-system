@@ -7,7 +7,10 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0">Manage Time Table</h1>
+                <h1 class="m-0">
+                    Manage Time Table
+                    <a href="?action=add" class="mx-5 btn btn-lg btn-primary">Add New</a>
+                </h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
@@ -22,6 +25,38 @@
 <!-- Main content -->
 <section class="content">
     <div class="container-fluid">
+        <?php if(isset($_GET['action']) && $_GET['action'] == 'add') { ?>
+            <div class="card">
+                <div class="card-body">
+                <form action="" class="form-group" method="POST">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <label for="select_class">Select Class (Year)</label>
+                            <select name="select_class" id="select_class" class="form-control bg-white mb-4" id="select_class" required>
+                                <option value="">Select Class (Year)</option>
+                                <?php
+                                $args = array('type' => 'class', 'status' => 'publish');
+                                $classes = get_posts($args);
+                                foreach ($classes as $class) {
+                                ?>
+                                    <option value="<?php echo $class->id; ?>"><?php echo $class->title; ?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group" id="section-container" style="display:none">
+                                <label for="select_section">Select Section (Semester)</label>
+                                <select require name="select_section" id="select_section" class="form-control bg-white">
+                                    <option value="">Select Section (Semester)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                </div>
+            </div>
+        <?php } else {?>
+
         <div class="card">
             <div class="card-body">
                 <form action="" class="form-group" method="POST">
@@ -43,13 +78,13 @@
                             <div class="form-group" id="section-container" style="display:none">
                                 <label for="select_section">Select Section (Semester)</label>
                                 <select require name="select_section" id="select_section" class="form-control bg-white">
-                                    <option value="">-Select Section-</option>
+                                    <option value="">Select Section (Semester)</option>
                                 </select>
                             </div>
                         </div>
                     </div>
+                </form>
             </div>
-            </form>
         </div>
     </div>
 
@@ -112,205 +147,13 @@
                                     </td>
                             <?php }
                             } ?>
-                            <!-- <td>
-                            <p>
-                                <b>Sub: </b> Sub name<br>
-                                <b>Teacher: </b> Teacher name
-                            </p>
-                        </td>
-                        <td>
-                            <p>
-                                <b>Sub: </b> Sub name<br>
-                                <b>Teacher: </b> Teacher name
-                            </p>
-                        </td>
-                        <td>
-                            <p>
-                                <b>Sub: </b> Sub name<br>
-                                <b>Teacher: </b> Teacher name
-                            </p>
-                        </td>
-                        <td>
-                            <p>
-                                <b>Sub: </b> Sub name<br>
-                                <b>Teacher: </b> Teacher name
-                            </p>
-                        </td> -->
                         </tr>
                     <?php } ?>
-                    <!-- <tr>
-                        <td>10:00 AM - 10:50 AM</td>
-                        <td>
-                            <p>
-                                <b>Sub: </b> Sub name<br>
-                                <b>Teacher: </b> Teacher name
-                            </p>
-                        </td>
-                        <td>
-                            <p>
-                                <b>Sub: </b> Sub name<br>
-                                <b>Teacher: </b> Teacher name
-                            </p>
-                        </td>
-                        <td>
-                            <p>
-                                <b>Sub: </b> Sub name<br>
-                                <b>Teacher: </b> Teacher name
-                            </p>
-                        </td>
-                        <td>
-                            <p>
-                                <b>Sub: </b> Sub name<br>
-                                <b>Teacher: </b> Teacher name
-                            </p>
-                        </td>
-                        <td>
-                            <p>
-                                <b>Sub: </b> Sub name<br>
-                                <b>Teacher: </b> Teacher name
-                            </p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>10:50 AM - 11:40 AM</td>
-                        <td>
-                            <p>
-                                <b>Sub: </b> Sub name<br>
-                                <b>Teacher: </b> Teacher name
-                            </p>
-                        </td>
-                        <td>
-                            <p>
-                                <b>Sub: </b> Sub name<br>
-                                <b>Teacher: </b> Teacher name
-                            </p>
-                        </td>
-                        <td>
-                            <p>
-                                <b>Sub: </b> Sub name<br>
-                                <b>Teacher: </b> Teacher name
-                            </p>
-                        </td>
-                        <td>
-                            <p>
-                                <b>Sub: </b> Sub name<br>
-                                <b>Teacher: </b> Teacher name
-                            </p>
-                        </td>
-                        <td>
-                            <p>
-                                <b>Sub: </b> Sub name<br>
-                                <b>Teacher: </b> Teacher name
-                            </p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>11:40 AM - 12:30 PM</td>
-                        <td colspan="5" class="text-center"><b style="font-size: 2rem;">Break</b></td>
-                    </tr>
-                    <tr>
-                        <td>12:30 PM - 01:20 PM</td>
-                        <td>
-                            <p>
-                                <b>Sub: </b> Sub name<br>
-                                <b>Teacher: </b> Teacher name
-                            </p>
-                        </td>
-                        <td>
-                            <p>
-                                <b>Sub: </b> Sub name<br>
-                                <b>Teacher: </b> Teacher name
-                            </p>
-                        </td>
-                        <td>
-                            <p>
-                                <b>Sub: </b> Sub name<br>
-                                <b>Teacher: </b> Teacher name
-                            </p>
-                        </td>
-                        <td>
-                            <p>
-                                <b>Sub: </b> Sub name<br>
-                                <b>Teacher: </b> Teacher name
-                            </p>
-                        </td>
-                        <td>
-                            <p>
-                                <b>Sub: </b> Sub name<br>
-                                <b>Teacher: </b> Teacher name
-                            </p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>01:20 PM - 02:10 PM</td>
-                        <td>
-                            <p>
-                                <b>Sub: </b> Sub name<br>
-                                <b>Teacher: </b> Teacher name
-                            </p>
-                        </td>
-                        <td>
-                            <p>
-                                <b>Sub: </b> Sub name<br>
-                                <b>Teacher: </b> Teacher name
-                            </p>
-                        </td>
-                        <td>
-                            <p>
-                                <b>Sub: </b> Sub name<br>
-                                <b>Teacher: </b> Teacher name
-                            </p>
-                        </td>
-                        <td>
-                            <p>
-                                <b>Sub: </b> Sub name<br>
-                                <b>Teacher: </b> Teacher name
-                            </p>
-                        </td>
-                        <td>
-                            <p>
-                                <b>Sub: </b> Sub name<br>
-                                <b>Teacher: </b> Teacher name
-                            </p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>02:10 PM - 03:00 PM</td>
-                        <td>
-                            <p>
-                                <b>Sub: </b> Sub name<br>
-                                <b>Teacher: </b> Teacher name
-                            </p>
-                        </td>
-                        <td>
-                            <p>
-                                <b>Sub: </b> Sub name<br>
-                                <b>Teacher: </b> Teacher name
-                            </p>
-                        </td>
-                        <td>
-                            <p>
-                                <b>Sub: </b> Sub name<br>
-                                <b>Teacher: </b> Teacher name
-                            </p>
-                        </td>
-                        <td>
-                            <p>
-                                <b>Sub: </b> Sub name<br>
-                                <b>Teacher: </b> Teacher name
-                            </p>
-                        </td>
-                        <td>
-                            <p>
-                                <b>Sub: </b> Sub name<br>
-                                <b>Teacher: </b> Teacher name
-                            </p>
-                        </td>
-                    </tr> -->
                 </tbody>
             </table>
         </div>
     </div>
+    <?php } ?>
     </div>
 </section>
 <!-- /.content -->

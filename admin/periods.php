@@ -6,10 +6,11 @@ if (isset($_POST['submit'])) {
     $from = $_POST['from'];
     $to = $_POST['to'];
     $type = 'period';
+    $description = $title." Description";
     $status = 'publish';
     $date_added = date('Y-m-d');
 
-    $query = mysqli_query($con, "INSERT INTO posts (title, status, type, publish_date) VALUES ('$title', '$status', '$type', '$date_added')");
+    $query = mysqli_query($con, "INSERT INTO posts (title, status, type, description, publish_date) VALUES ('$title', '$status', '$type', '$description', '$date_added')");
 
     if ($query) {
         $post_id = mysqli_insert_id($con); // Returns the id of last inserted row
