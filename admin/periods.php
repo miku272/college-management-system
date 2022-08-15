@@ -37,20 +37,24 @@
                                     <tr>
                                         <th>Sr no.</th>
                                         <th>Title</th>
+                                        <th>From</th>
+                                        <th>To</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
-                                    $args = array('type' => 'section', 'status' => 'publish');
-                                    $sections = get_posts($args);
+                                    $args = array('type' => 'period', 'status' => 'publish');
+                                    $periods = get_posts($args);
                                     $count = 1;
 
-                                    foreach ($sections as $section) {
+                                    foreach ($periods as $period) {
                                     ?>
                                         <tr>
                                             <td><?php echo $count; ?></td>
-                                            <td><?php echo $section->title; ?></td>
+                                            <td><?php echo $period->title; ?></td>
+                                            <td></td>
+                                            <td></td>
                                             <td></td>
                                         </tr>
                                     <?php $count++;
@@ -60,6 +64,8 @@
                                     <tr>
                                         <th>Sr no.</th>
                                         <th>Title</th>
+                                        <th>From</th>
+                                        <th>To</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -82,6 +88,12 @@
                                 <div class="form-group px-5 py-3">
                                     <label for="title">Title</label>
                                     <input type="text" name="title" class="form-control bg-white" placeholder="Enter title" required>
+
+                                    <label for="title">From</label>
+                                    <input type="time" name="from" class="form-control bg-white" required>
+
+                                    <label for="title">To</label>
+                                    <input type="time" name="to" class="form-control bg-white" required>
                                 </div>
                                 <input type="submit" name="submit" class="btn btn-success mx-5 mb-2 col-3" value="Add Period">
                             </form>
