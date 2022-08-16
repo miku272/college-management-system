@@ -129,8 +129,6 @@
                   <option hidden="true">Choose your department</option>
                   <option value="BCA">BCA</option>
                   <option value="BBA">BBA</option>
-                  <option value="MCA">MCA</option>
-                  <option value="MBA">MBA</option>
                 </select>
               </div>
               <div class="input-group mb-4">
