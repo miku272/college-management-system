@@ -8,8 +8,11 @@
         session_start();
         $_SESSION['signIn'] = true;
         header('location: ../admin/dashboard.php');
-    }
-    else {
+    } elseif ($email === 'student@example.com' and $password === '123') {
+        session_start();
+        $_SESSION['student'] = true;
+        header('location: ../student/dashboard.php');
+    } else {
         echo "<script>alert('Invalid email or password')</script>";
     }
 ?>

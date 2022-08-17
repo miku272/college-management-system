@@ -5,8 +5,18 @@
 <?php
 if(isset($_POST['submit'])) {
     $title = $_POST['title'];
+    $description = $title." Description";
+    $type = 'section';
+    $date_added = date('Y-m-d');
+    $status = 'publish';
 
-    $query = mysqli_query($con, "INSERT INTO sections (title) VALUES('$title')");
+    $query = mysqli_query($con, "INSERT INTO posts (title, description, type, publish_date, status) VALUES('$title', '$description', '$type', '$date_added', '$status')");
+
+    if($query) {
+        echo "<script>alert('Data inserted successfully');</script>";
+    } else {
+        echo "<script>alert('Some error occured');</script>";
+    }
 }
 ?>
 
@@ -15,7 +25,7 @@ if(isset($_POST['submit'])) {
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0">Manage Sections</h1>
+                <h1 class="m-0">Manage Sections (Semesters)</h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
@@ -35,7 +45,7 @@ if(isset($_POST['submit'])) {
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">
-                            Sections
+                            Sections (Semesters)
                         </h3>
                     </div>
                     <div class="card-body">
@@ -81,7 +91,7 @@ if(isset($_POST['submit'])) {
                 <div class="card">
                     <div class="card-header py-2">
                         <h3 class="card-title">
-                            Add New Section
+                            Add New Section (Semester)
                         </h3>
                     </div>
                     <div class="card-body">
@@ -89,7 +99,7 @@ if(isset($_POST['submit'])) {
                             <form action="" method="POST">
                                 <div class="form-group px-5 py-3">
                                     <label for="title">Title</label>
-                                    <input type="text" name="title" class="form-control bg-white" placeholder="Enter title" required>
+                                    <input type="text" name="title" class="form-control bg-white" placeholder="Enter section (Semester) title" required>
                                 </div>
                                 <input type="submit" name="submit" class="btn btn-success mx-5 mb-2 col-3" value="Add Section">
                             </form>

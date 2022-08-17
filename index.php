@@ -40,13 +40,13 @@
             <a class="nav-link" href="#">Events</a>
           </li> -->
         </ul>
-        <?php if (!isset($_SESSION['signIn'])) { ?>
+        <?php if (!isset($_SESSION['signIn']) and !isset($_SESSION['student'])) { ?>
           <form class="d-flex float-right" role="search">
             <a class="btn btn-outline-success" href="signIn.php">Sign In</a>
           </form>
         <?php } else { ?>
           <form class="d-flex" role="search">
-            <a class="btn btn-outline-primary me-5" href="admin/dashboard.php">Dashboard</a>
+            <a class="btn btn-outline-primary me-5" href= <?php if(isset($_SESSION['student'])){echo "./student/dashboard.php";} else {echo "./admin/dashboard.php";}?>>Dashboard</a>
           </form>
           <form class="d-flex" role="search">
             <a class="btn btn-outline-danger" href="actions/logout.php">Log Out</a>
@@ -66,12 +66,12 @@
         <h1 class="display-3 my-5">Welcome to College Mangement Website!</h1>
         <p class="my-4">The prestigious WURI Rankings 2022 has ranked us 2nd in India among the Top Ivy League
           universities. In our very first attempt, we have secured a global band of 101-200. Join with us now!</p>
-        <?php if (!isset($_SESSION['signIn'])) { ?>
+        <?php if (!isset($_SESSION['signIn']) and !isset($_SESSION['student'])) { ?>
           <a href="signIn.php" class="btn btn-lg btn-outline-success my-3 mx-5 col-lg-6">Sign In </a>
         <?php } ?>
       </div>
       <!-- Right Side -->
-      <?php if (!isset($_SESSION['signIn'])) { ?>
+      <?php if (!isset($_SESSION['signIn']) and !isset($_SESSION['student'])) { ?>
         <div class="col-lg-6 my-5">
           <div class="w-50 mx-auto">
             <h4>Student registration and inquiry form</h4>

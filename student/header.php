@@ -3,7 +3,7 @@ session_start();
 
 $site_url = "http://localhost/collegeManagementSystem/";
 
-if (!isset($_SESSION['signIn'])) header('Location: ../signIn.php');
+if (!isset($_SESSION['student'])) header('Location: ../signIn.php');
 
 ?>
 

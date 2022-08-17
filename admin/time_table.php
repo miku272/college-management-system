@@ -95,8 +95,12 @@ if (isset($_POST['submit'])) {
                                     <label for="select_teacher">Select Teacher</label>
                                     <select require name="select_teacher" id="select_teacher" class="form-control bg-white" required>
                                         <option value="">Select Teacher</option>
-                                        <option value="1">Teacher 1</option>
-                                        <option value="2">Teacher 2</option>
+                                        <?php
+                                        $query = mysqli_query($con, "SELECT * FROM accounts WHERE user_type = 'teacher'");
+                                        while ($teachers = mysqli_fetch_object($query)) {
+                                        ?>
+                                        <option value="<?php echo $teachers->id; ?>"><?php echo $teachers->user_name; ?></option>
+                                        <?php } ?>
                                     </select>
                                 </div>
                             </div>
@@ -135,8 +139,7 @@ if (isset($_POST['submit'])) {
                                     <label for="select_subject">Select Subject</label>
                                     <select require name="select_subject" id="select_subject" class="form-control bg-white" required>
                                         <option value="">Select Subject</option>
-                                        <option value="1">Subject 1</option>
-                                        <option value="2">Subject 2</option>
+                                        
                                     </select>
                                 </div>
                             </div>
@@ -222,7 +225,7 @@ if (isset($_POST['submit'])) {
                                                 <b>Sub: </b>
                                                 <?php
                                                 $subject_id = get_metadata($time_table->item_id, 'subject_id')[0]->meta_value;
-                                                echo get_post(array('id'=>$subject_id))->title;
+                                                echo get_post(array('id' => $subject_id))->title;
                                                 ?>
                                                 <br>
                                                 <b>Teacher: </b> <?php

@@ -36,7 +36,7 @@ if (isset($_POST['submit'])) {
             <div class="card">
                 <div class="card-header py-2">
                     <h3 class="card-title">
-                        Add New Class
+                        Add New Class (Year)
                     </h3>
                 </div>
                 <div class="card-body">
@@ -44,11 +44,11 @@ if (isset($_POST['submit'])) {
                         <form action="" method="POST">
                             <div class="form-group px-5 py-3">
                                 <label for="title">Title</label>
-                                <input type="text" name="title" class="form-control bg-white mb-4" placeholder="Enter title" required>
+                                <input type="text" name="title" class="form-control bg-white mb-4" placeholder="Enter class title" required>
 
-                                <label for="section">Section</label>
+                                <label for="section">Section (Semester)</label>
                                 <?php
-                                $query = mysqli_query($con, "SELECT * FROM sections");
+                                $query = mysqli_query($con, "SELECT * FROM posts WHERE type = 'section'");
                                 $count = 1;
                                 while ($sections = mysqli_fetch_object($query)) {
                                 ?>
