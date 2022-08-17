@@ -11,7 +11,7 @@ if (isset($_POST['submit'])) {
     $date_added = date('Y-m-d');
     $status = 'publish';
     $type = 'time_table';
-    $title = $day . " ";
+    $title = $day . " Time table";
 
     $query = mysqli_query($con, "INSERT INTO posts (type, status, publish_date) VALUES ('$type', '$status', '$date_added')");
 
@@ -99,7 +99,7 @@ if (isset($_POST['submit'])) {
                                         $query = mysqli_query($con, "SELECT * FROM accounts WHERE user_type = 'teacher'");
                                         while ($teachers = mysqli_fetch_object($query)) {
                                         ?>
-                                        <option value="<?php echo $teachers->id; ?>"><?php echo $teachers->user_name; ?></option>
+                                            <option value="<?php echo $teachers->id; ?>"><?php echo $teachers->user_name; ?></option>
                                         <?php } ?>
                                     </select>
                                 </div>
@@ -139,7 +139,13 @@ if (isset($_POST['submit'])) {
                                     <label for="select_subject">Select Subject</label>
                                     <select require name="select_subject" id="select_subject" class="form-control bg-white" required>
                                         <option value="">Select Subject</option>
-                                        
+                                        <?php
+                                        $args = array('type' => 'subject', 'status' => 'publish');
+                                        $subjects = get_posts($args);
+                                        foreach ($subjects as $subject) {
+                                        ?>
+                                            <option value="<?php echo $subject->id; ?>"><?php echo $subject->title; ?></option>
+                                        <?php } ?>
                                     </select>
                                 </div>
                             </div>
@@ -237,11 +243,6 @@ if (isset($_POST['submit'])) {
                                     <?php }
                                 } else { ?>
                                     <td>
-                                        <!-- <p>
-                                            <b>Sub: </b> Sub name<br>
-                                            <b>Teacher: </b> <?php // echo get_metadata($time_table->item_id, 'teacher_id')[0]->meta_value; 
-                                                                ?>
-                                        </p> -->
                                         Unscheduled
                                     </td>
                             <?php }
@@ -256,26 +257,4 @@ if (isset($_POST['submit'])) {
 </div>
 </section>
 <!-- /.content -->
-<!-- <script>
-    jQuery(document).ready(function() {
-        jQuery('#select_class').change(function() {
-            jQuery.ajax({
-                url: 'ajax.php',
-                type: 'POST',
-                data: {
-                    'class_id': jQuery(this).val()
-                },
-                dataType: 'json',
-                success: function(response) {
-                    if (response.count > 0) {
-                        jQuery('#section-container').show();
-                        jQuery('#select_section').html(response.options);
-                    } else {
-                        jQuery('#section-container').hide();
-                    }
-                }
-            });
-        });
-    });
-</script> -->
 <?php include('footer.php'); ?>

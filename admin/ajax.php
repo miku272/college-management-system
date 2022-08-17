@@ -5,7 +5,7 @@ if (isset($_POST['class_id']) && $_POST['class_id']) {
     $class_id = $_POST['class_id'];
     $class_meta = get_metadata($class_id, 'section');
     $count = 0;
-    $options = '<option value="">-Select Section-</option>';
+    $options = '<option value="">Select Section (Semester)</option>';
     foreach ($class_meta as $meta) {
         $section = get_post(array('id' => $meta->meta_value));
         $options .= '<option value="' . $section->id . '">' . $section->title . '</option>';

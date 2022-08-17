@@ -1,5 +1,36 @@
 <?php include('../includes/config.php'); ?>
 
+<?php
+if (isset($_POST['submit_subject'])) {
+    $title = $_POST['input_subject'];
+    $class = $_POST['select_class'];
+    $section = $_POST['select_section'];
+    $description = $title . " Description";
+    $type = 'subject';
+    $date_added = date('Y-m-d');
+    $status = 'publish';
+
+    $query = mysqli_query($con, "INSERT INTO posts (title, description, type, publish_date, status) VALUES ('$title', '$description', '$type', '$date_added', '$status')");
+
+    if ($query) {
+        $item_id = mysqli_insert_id($con);
+
+        $metadata = array(
+            'class_id' => $class,
+            'section_id' => $section,
+        );
+
+        foreach ($metadata as $key => $value) {
+            mysqli_query($con, "INSERT INTO metadata (item_id, meta_key, meta_value) VALUES ('$item_id', '$key', '$value')");
+        }
+
+        echo "<script>alert('Data inserted Successfully');</script>";
+    } else {
+        echo "<script>alert('Some error occured!');</script>";
+    }
+}
+?>
+
 <?php include('header.php'); ?>
 <?php include('side_bar.php'); ?>
 
@@ -94,7 +125,7 @@
                                         <tr>
                                             <td><?php echo $count; ?></td>
                                             <td><?php echo $subject->title; ?></td>
-                                            <td><?php echo $subject->date_added; ?></td>
+                                            <td><?php echo $subject->publish_date; ?></td>
                                             <td></td>
                                         </tr>
                                     <?php $count++;
