@@ -13,20 +13,20 @@ if (isset($_POST['submit'])) {
     $type = 'time_table';
     $title = $day . " Time table";
 
+    $metadata = array(
+        'class_id' => $class,
+        'section_id' => $section,
+        'teacher_id' => $teacher,
+        'period_id' => $period,
+        'day_name' => $day,
+        'subject_id' => $subject,
+    );
+
     $query = mysqli_query($con, "INSERT INTO posts (type, status, publish_date) VALUES ('$type', '$status', '$date_added')");
 
+    $item_id = mysqli_insert_id($con);
+
     if ($query) {
-        $item_id = mysqli_insert_id($con);
-
-        $metadata = array(
-            'class_id' => $class,
-            'section_id' => $section,
-            'teacher_id' => $teacher,
-            'period_id' => $period,
-            'day_name' => $day,
-            'subject_id' => $subject,
-        );
-
         foreach ($metadata as $key => $value) {
             mysqli_query($con, "INSERT INTO metadata (item_id, meta_key, meta_value) VALUES ('$item_id', '$key', '$value')");
         }
