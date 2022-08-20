@@ -75,7 +75,10 @@ if (isset($_POST['user_submit'])) {
                                 <td><?php echo $count; ?></td>
                                 <td><?php echo $users->user_name; ?></td>
                                 <td><?php echo $users->email; ?></td>
-                                <td></td>
+                                <td>
+                                    <a href="user_accounts_updates.php?id=<?php echo $users->id ?>" class="btn btn-primary">Edit</a>
+                                    <a href="user_accounts_delete.php?id=<?php echo $users->id ?>" class="btn btn-danger">Delete</a>
+                                </td>
                             </tr>
                         <?php $count++;
                         }  ?>

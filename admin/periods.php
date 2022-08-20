@@ -6,7 +6,7 @@ if (isset($_POST['submit'])) {
     $from = $_POST['from'];
     $to = $_POST['to'];
     $type = 'period';
-    $description = $title." Description";
+    $description = $title . " Description";
     $status = 'publish';
     $date_added = date('Y-m-d');
 
@@ -94,7 +94,10 @@ if (isset($_POST['submit'])) {
                                                 echo date('h:i A', strtotime($to));
                                                 ?>
                                             </td>
-                                            <td></td>
+                                            <td>
+                                                <a href="#" class="btn btn-primary">Edit</a>
+                                                <a href="#" class="btn btn-danger">Delete</a>
+                                            </td>
                                         </tr>
                                     <?php $count++;
                                     } ?>

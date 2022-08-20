@@ -164,14 +164,17 @@ if (isset($_POST['submit'])) {
                                         <td><?php echo $course->duration; ?></td>
                                         <td><?php echo $course->price; ?></td>
                                         <td><?php echo $course->date_added; ?></td>
-                                        <td></td>
+                                        <td>
+                                            <a href="#" class="btn btn-primary">Edit</a>
+                                            <a href="#" class="btn btn-danger">Delete</a>
+                                        </td>
                                     </tr>
                                 <?php $count++;
                                 } ?>
                             </tbody>
                             <thead>
                                 <tr>
-                                <th>Sr no.</th>
+                                    <th>Sr no.</th>
                                     <th></th>
                                     <th>Name</th>
                                     <th>Category</th>

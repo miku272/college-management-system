@@ -126,7 +126,10 @@ if (isset($_POST['submit_subject'])) {
                                             <td><?php echo $count; ?></td>
                                             <td><?php echo $subject->title; ?></td>
                                             <td><?php echo $subject->publish_date; ?></td>
-                                            <td></td>
+                                            <td>
+                                                <a href="#" class="btn btn-primary">Edit</a>
+                                                <a href="#" class="btn btn-danger">Delete</a>
+                                            </td>
                                         </tr>
                                     <?php $count++;
                                     } ?>

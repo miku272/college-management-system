@@ -3,16 +3,16 @@
 <?php include('side_bar.php'); ?>
 
 <?php
-if(isset($_POST['submit'])) {
+if (isset($_POST['submit'])) {
     $title = $_POST['title'];
-    $description = $title." Description";
+    $description = $title . " Description";
     $type = 'section';
     $date_added = date('Y-m-d');
     $status = 'publish';
 
     $query = mysqli_query($con, "INSERT INTO posts (title, description, type, publish_date, status) VALUES('$title', '$description', '$type', '$date_added', '$status')");
 
-    if($query) {
+    if ($query) {
         echo "<script>alert('Data inserted successfully');</script>";
     } else {
         echo "<script>alert('Some error occured');</script>";
@@ -69,7 +69,10 @@ if(isset($_POST['submit'])) {
                                         <tr>
                                             <td><?php echo $count; ?></td>
                                             <td><?php echo $section->title; ?></td>
-                                            <td></td>
+                                            <td>
+                                                <a href="#" class="btn btn-primary">Edit</a>
+                                                <a href="#" class="btn btn-danger">Delete</a>
+                                            </td>
                                         </tr>
                                     <?php $count++;
                                     } ?>

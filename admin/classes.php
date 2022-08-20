@@ -104,14 +104,17 @@ if (isset($_POST['submit'])) {
                                             <?php
                                             $class_meta = get_metadata($class->id, 'section');
 
-                                            foreach ($class_meta as $meta){
+                                            foreach ($class_meta as $meta) {
                                                 $section = get_post(array('id' => $meta->meta_value));
 
                                                 echo $section->title, "<br>";
                                             }
                                             ?>
                                         </td>
-                                        <td></td>
+                                        <td>
+                                            <a href="#" class="btn btn-primary">Edit</a>
+                                            <a href="#" class="btn btn-danger">Delete</a>
+                                        </td>
                                     </tr>
                                 <?php $count++;
                                 } ?>
