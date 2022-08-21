@@ -79,7 +79,7 @@ if (isset($_POST['submit_subject'])) {
 
                             <div class="form-group" id="section-container" style="display:none">
                                 <label for="select_section">Select Section (Semester)</label>
-                                <select require name="select_section" id="select_section" class="form-control bg-white">
+                                <select require name="select_section" id="select_section" class="form-control bg-white" required>
                                     <option value="">-Select Section-</option>
                                 </select>
                             </div>
@@ -127,8 +127,8 @@ if (isset($_POST['submit_subject'])) {
                                             <td><?php echo $subject->title; ?></td>
                                             <td><?php echo $subject->publish_date; ?></td>
                                             <td>
-                                                <a href="#" class="btn btn-primary">Edit</a>
-                                                <a href="#" class="btn btn-danger">Delete</a>
+                                                <a href="subjects_updates.php?id=<?php echo $subject->id; ?>" class="btn btn-primary">Edit</a>
+                                                <a href="subjects_delete.php?id=<?php echo $subject->id; ?>" class="btn btn-danger">Delete</a>
                                             </td>
                                         </tr>
                                     <?php $count++;

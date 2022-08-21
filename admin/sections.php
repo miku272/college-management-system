@@ -70,8 +70,8 @@ if (isset($_POST['submit'])) {
                                             <td><?php echo $count; ?></td>
                                             <td><?php echo $section->title; ?></td>
                                             <td>
-                                                <a href="#" class="btn btn-primary">Edit</a>
-                                                <a href="#" class="btn btn-danger">Delete</a>
+                                                <a href="sections_updates.php?id=<?php echo $section->id; ?>" class="btn btn-primary">Edit</a>
+                                                <a href="sections_delete.php?id=<?php echo $section->id; ?>" class="btn btn-danger">Delete</a>
                                             </td>
                                         </tr>
                                     <?php $count++;

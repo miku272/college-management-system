@@ -1,16 +1,27 @@
 <?php include('../includes/config.php'); ?>
-<?php include('header.php'); ?>
-<?php include('side_bar.php'); ?>
 
 <?php
 if (isset($_POST['submit'])) {
     $title = $_POST['title'];
-    $section_title = implode(',', $_POST['section']);
+    $description = $title." Description";
+    $type = 'class';
     $added_date = date('Y-m-d');
+    $status = 'publish';
 
-    $query = mysqli_query($con, "INSERT INTO classes (title, section, added_date) VALUES('$title', '$section_title', '$added_date')") or die('oops! Something went wrong...');
+    $query = mysqli_query($con, "INSERT INTO posts (title, description, type, publish_date, status) VALUES('$title', '$description', '$type', '$added_date', '$status')") or die('oops! Something went wrong...');
+
+    $item_id = mysqli_insert_id($con);
+    $section_ids = $_POST['section'];
+
+    foreach($section_ids as $section_id) {
+        $meta_query = mysqli_query($con, "INSERT INTO metadata (item_id, meta_key, meta_value) VALUES ($item_id, 'section', '$section_id')");
+    }
 }
 ?>
+
+<?php include('header.php'); ?>
+<?php include('side_bar.php'); ?>
+
 
 <!-- Content Header (Page header) -->
 <div class="content-header">
@@ -54,7 +65,7 @@ if (isset($_POST['submit'])) {
                                 ?>
                                     <div>
                                         <label for="<?php $count ?>">
-                                            <input type="checkbox" id="<?php $count ?>" value="<?php echo $sections->title; ?>" name="section[]" class="mb-1"><?php echo $sections->title; ?>
+                                            <input type="checkbox" id="<?php $count ?>" value="<?php echo $sections->id; ?>" name="section[]" class="mb-1"><?php echo $sections->title; ?>
                                         </label>
                                     </div>
                                 <?php $count++;
@@ -112,8 +123,8 @@ if (isset($_POST['submit'])) {
                                             ?>
                                         </td>
                                         <td>
-                                            <a href="#" class="btn btn-primary">Edit</a>
-                                            <a href="#" class="btn btn-danger">Delete</a>
+                                            <a href="classes_updates.php?id=<?php echo $class->id ?>" class="btn btn-primary">Edit</a>
+                                            <a href="classes_delete.php?id=<?php echo $class->id ?>" class="btn btn-danger">Delete</a>
                                         </td>
                                     </tr>
                                 <?php $count++;
