@@ -95,8 +95,8 @@ if (isset($_POST['submit'])) {
                                                 ?>
                                             </td>
                                             <td>
-                                                <a href="#" class="btn btn-primary">Edit</a>
-                                                <a href="#" class="btn btn-danger">Delete</a>
+                                                <a href="periods_updates.php?id=<?php echo $period->id ?>" class="btn btn-primary">Edit</a>
+                                                <a href="periods_delete.php?id=<?php echo $period->id ?>" class="btn btn-danger">Delete</a>
                                             </td>
                                         </tr>
                                     <?php $count++;
