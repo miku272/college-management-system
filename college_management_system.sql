@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Aug 18, 2022 at 05:48 AM
+-- Generation Time: Aug 25, 2022 at 04:34 PM
 -- Server version: 8.0.27
 -- PHP Version: 7.4.26
 
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `accounts` (
   `password` text NOT NULL,
   `user_name` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `accounts`
@@ -47,8 +47,7 @@ INSERT INTO `accounts` (`id`, `user_type`, `email`, `password`, `user_name`) VAL
 (6, 'parent', 'parent1@example.com', '123', 'Ashok Sharma'),
 (7, 'librarian', 'librarian1@example.com', '123', 'Krishna Patel'),
 (9, 'counsellor', 'counsellor1@example.com', '123', 'Chirag Mehta'),
-(10, 'counsellor', 'counsellor2@example.com', '123', 'Mohini Patel'),
-(11, 'admin', 'admin1@example.com', '123', 'Mohini Patel');
+(12, 'counsellor', 'counsellor2@example.com', '123', 'Mohini Patel');
 
 -- --------------------------------------------------------
 
@@ -66,7 +65,7 @@ CREATE TABLE IF NOT EXISTS `courses` (
   `date_added` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `course_image` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `courses`
@@ -74,7 +73,7 @@ CREATE TABLE IF NOT EXISTS `courses` (
 
 INSERT INTO `courses` (`id`, `course_name`, `category`, `duration`, `price`, `date_added`, `course_image`) VALUES
 (1, 'Bachelors of Business Administration (BBA)', 'Business and Management', 3, 15000, '2022-07-29 10:57:24', 'web_designing.jpg'),
-(2, 'Bachelors of Computers Application', 'Computer Science and IT', 3, 15000, '2022-07-29 00:00:00', 'web_designing.jpg');
+(2, 'Bachelors of Computers Application (BCA)', 'Computer Science and IT', 3, 15000, '2022-07-29 00:00:00', 'web_designing.jpg');
 
 -- --------------------------------------------------------
 
@@ -89,7 +88,7 @@ CREATE TABLE IF NOT EXISTS `metadata` (
   `meta_key` text NOT NULL,
   `meta_value` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=111 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=129 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `metadata`
@@ -138,7 +137,7 @@ CREATE TABLE IF NOT EXISTS `posts` (
   `status` varchar(50) NOT NULL,
   `parent` int NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `posts`

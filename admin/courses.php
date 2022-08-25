@@ -165,8 +165,8 @@ if (isset($_POST['submit'])) {
                                         <td><?php echo $course->price; ?></td>
                                         <td><?php echo $course->date_added; ?></td>
                                         <td>
-                                            <a href="#" class="btn btn-primary">Edit</a>
-                                            <a href="#" class="btn btn-danger">Delete</a>
+                                            <a href="courses_updates.php?id=<?php echo $course->id; ?>" class="btn btn-primary">Edit</a>
+                                            <a href="courses_delete.php?id=<?php echo $course->id ?>" class="btn btn-danger">Delete</a>
                                         </td>
                                     </tr>
                                 <?php $count++;
