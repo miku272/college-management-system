@@ -32,6 +32,9 @@
                             <input type="submit" class="btn btn-lg btn-outline-primary col-12" name="signInBtn" value="Sign In">
                         </div>
                     </form>
+                    <div class="d-flex justify-content-center">
+                        <span>New here?&nbsp;</span> <a href="signUp.php" style="text-decoration: none;">&nbsp;Register here&nbsp;</a> <span>or&nbsp;</span><a href="index.php" style="text-decoration: none;">Return to home</a>
+                    </div>
                 </div>
             </div>
         </div>

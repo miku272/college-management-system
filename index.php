@@ -42,7 +42,8 @@
         </ul>
         <?php if (!isset($_SESSION['signIn']) and !isset($_SESSION['student'])) { ?>
           <form class="d-flex float-right" role="search">
-            <a class="btn btn-outline-success" href="signIn.php">Sign In</a>
+            <a class="btn btn-outline-success me-4" href="signIn.php">Sign In</a>
+            <a class="btn btn-outline-primary me-4" href="signUp.php">Sign Up</a>
           </form>
         <?php } else { ?>
           <form class="d-flex" role="search">
@@ -68,6 +69,7 @@
           universities. In our very first attempt, we have secured a global band of 101-200. Join with us now!</p>
         <?php if (!isset($_SESSION['signIn']) and !isset($_SESSION['student'])) { ?>
           <a href="signIn.php" class="btn btn-lg btn-outline-success my-3 mx-5 col-lg-6">Sign In </a>
+          <a href="signUp.php" class="btn btn-lg btn-outline-primary my-3 mx-5 col-lg-6">Sign Up </a>
         <?php } ?>
       </div>
       <!-- Right Side -->
